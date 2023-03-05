@@ -28,8 +28,8 @@ public class CurrentLocalDateTime extends Application {
 
         VBox vBox = new VBox();
         vBox.getChildren().add(labelDateTime);
-
         vBox.setAlignment(Pos.CENTER);
+
         Scene scene = new Scene(vBox, 320, 240);
         stage.setTitle("Date and Time");
         stage.setScene(scene);
