@@ -17,7 +17,7 @@ public class CurrentLocalDateTime extends Application {
     private final Label labelDateTime;
 
     public CurrentLocalDateTime() {
-        labelDateTime = new Label(printLocalDateTime());
+        labelDateTime = new Label(getLocalDateTimeAsString());
     }
 
     @Override
@@ -47,7 +47,7 @@ public class CurrentLocalDateTime extends Application {
                     Platform.runLater(new Runnable() {
                         @Override
                         public void run() {
-                            labelDateTime.setText(printLocalDateTime());
+                            labelDateTime.setText(getLocalDateTimeAsString());
                         }
                     });
                 }
@@ -61,7 +61,7 @@ public class CurrentLocalDateTime extends Application {
         launch();
     }
 
-    public String printLocalDateTime() {
+    public String getLocalDateTimeAsString() {
         LocalDateTime nowTime = LocalDateTime.now();
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
         return dateTimeFormatter.format(nowTime);
