@@ -14,12 +14,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class CurrentLocalDateTime extends Application {
-    private Label labelDateTime;
+    private final Label labelDateTime;
 
     public CurrentLocalDateTime() {
         labelDateTime = new Label(printLocalDateTime());
     }
-
 
     @Override
     public void start(Stage stage) throws IOException, InterruptedException {
@@ -38,15 +37,12 @@ public class CurrentLocalDateTime extends Application {
         Thread taskThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                double progress = 0;
                 while (true) {
-
                     try {
                         Thread.sleep(125);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-
 
                     Platform.runLater(new Runnable() {
                         @Override
@@ -61,18 +57,13 @@ public class CurrentLocalDateTime extends Application {
         taskThread.start();
     }
 
-
     public static void main(String[] args) {
         launch();
     }
 
-
     public String printLocalDateTime() {
         LocalDateTime nowTime = LocalDateTime.now();
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
-        String timeAsString = dateTimeFormatter.format(nowTime);
-        return timeAsString;
+        return dateTimeFormatter.format(nowTime);
     }
-
-
 }
